@@ -1,0 +1,39 @@
+# Documentation
+# https://docs.docker.com/compose/compose-file
+
+version: '3.4'
+
+services:
+  app:
+    build:
+      context: ./
+      args:
+        - ENV=production
+      # Set target to 'build' for development 'deploy' to test what will be deployed
+      # Note: jest will only work with 'build'
+      target: build
+    image: orb-vericondo-api
+    restart: always
+    working_dir: /usr/app
+    environment:
+      - PORT=5000
+    command:
+      - yarn
+      - start:dev
+    # Use this to test the deploy candidate
+    # command:
+    #   - node
+    #   - dist/main.js
+
+    env_file:
+      - ./config/.env.${ENV:-development}
+    ports:
+      - 5000:5000
+    volumes:
+      - $PWD:/usr/app
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
