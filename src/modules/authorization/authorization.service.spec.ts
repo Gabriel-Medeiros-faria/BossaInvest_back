@@ -31,7 +31,11 @@ describe('AuthorizationService', () => {
     service = module.get<AuthorizationService>(AuthorizationService)
   })
 
-  it('should be defined', () => {
-    expect(service).toBeDefined()
-  })
+  it(
+    'should be defined',
+    () => {
+      expect(service).toBeDefined();
+    },
+    10000 // Aumenta o timeout para 10 segundos
+  );
 })

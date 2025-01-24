@@ -32,7 +32,6 @@ const env = process.env.ENV || 'development'
         password: configService.get<string>('database.password', 'root'),
         database: configService.get<string>('database.database', 'test'),
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-        synchronize: true,
       }),
     }),
     UserModule,

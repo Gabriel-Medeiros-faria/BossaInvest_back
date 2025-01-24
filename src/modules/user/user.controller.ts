@@ -17,6 +17,7 @@ export class UserController {
   }
 
   @Get()
+  @Public()
   async getUsers() {
     return await this.userService.users()
   }

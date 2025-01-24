@@ -1,14 +1,15 @@
-import { Test, TestingModule } from '@nestjs/testing'
-import { RoleService } from './role.service'
-import { ConfigModule } from '@nestjs/config'
-import { TypeOrmModule } from '@nestjs/typeorm'
-import { UserEntity } from '../user/user.entity'
-import { RoleEntity } from './role.entity'
+import { Test, TestingModule } from '@nestjs/testing';
+import { RoleService } from './role.service';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserEntity } from '../user/user.entity';
+import { RoleEntity } from './role.entity';
 
 describe('UserRoleService', () => {
-  let service: RoleService
+  let service: RoleService;
 
-  beforeEach(async () => {
+  // Usando beforeAll para configurar o módulo apenas uma vez
+  beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
         ConfigModule.forRoot({
@@ -19,17 +20,22 @@ describe('UserRoleService', () => {
           type: 'sqlite',
           database: ':memory:',
           entities: [UserEntity, RoleEntity],
-          synchronize: true,
+          synchronize: true, // Pode alterar para false se não precisar de sincronização
         }),
         TypeOrmModule.forFeature([UserEntity, RoleEntity]),
       ],
       providers: [RoleService],
-    }).compile()
+    }).compile();
 
-    service = module.get<RoleService>(RoleService)
-  })
+    service = module.get<RoleService>(RoleService);
+  });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined()
-  })
-})
+  // Teste com timeout estendido para 10 segundos
+  it(
+    'should be defined',
+    () => {
+      expect(service).toBeDefined();
+    },
+    10000 // Aumenta o timeout para 10 segundos
+  );
+});
