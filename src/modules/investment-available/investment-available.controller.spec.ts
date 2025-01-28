@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { InvestmentAvailableController } from './investment-available.controller';
 import { AuthorizationGuard } from '../authorization/authorization.guard';
 import { Reflector } from '@nestjs/core';
-import { AuthorizationService } from '../authorization/authorization.service'; // Importe o serviço correto
+import { AuthorizationService } from '../authorization/authorization.service'; 
 
 describe('InvestmentAvailableController', () => {
   let controller: InvestmentAvailableController;
@@ -14,16 +14,16 @@ describe('InvestmentAvailableController', () => {
         {
           provide: AuthorizationGuard,
           useValue: {
-            canActivate: jest.fn().mockReturnValue(true), // Mock do AuthorizationGuard
+            canActivate: jest.fn().mockReturnValue(true), 
           },
         },
         {
           provide: Reflector,
-          useValue: {}, // Mock do Reflector
+          useValue: {}, 
         },
         {
-          provide: AuthorizationService, // Injetando o serviço corretamente
-          useValue: {}, // Mock do AuthorizationService
+          provide: AuthorizationService, 
+          useValue: {}, 
         },
       ],
     }).compile();

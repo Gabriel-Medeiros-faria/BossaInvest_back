@@ -8,7 +8,6 @@ import { RoleEntity } from './role.entity';
 describe('UserRoleService', () => {
   let service: RoleService;
 
-  // Usando beforeAll para configurar o módulo apenas uma vez
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
@@ -20,7 +19,7 @@ describe('UserRoleService', () => {
           type: 'sqlite',
           database: ':memory:',
           entities: [UserEntity, RoleEntity],
-          synchronize: true, // Pode alterar para false se não precisar de sincronização
+          synchronize: true, 
         }),
         TypeOrmModule.forFeature([UserEntity, RoleEntity]),
       ],
@@ -30,12 +29,11 @@ describe('UserRoleService', () => {
     service = module.get<RoleService>(RoleService);
   });
 
-  // Teste com timeout estendido para 10 segundos
   it(
     'should be defined',
     () => {
       expect(service).toBeDefined();
     },
-    10000 // Aumenta o timeout para 10 segundos
+    10000 
   );
 });

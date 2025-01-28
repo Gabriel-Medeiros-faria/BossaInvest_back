@@ -36,6 +36,6 @@ describe('AuthorizationService', () => {
     () => {
       expect(service).toBeDefined();
     },
-    10000 // Aumenta o timeout para 10 segundos
+    10000 
   );
 })

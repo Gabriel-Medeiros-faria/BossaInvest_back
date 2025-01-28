@@ -8,7 +8,7 @@ import { DataSource } from 'typeorm';
 
 
 const AppDataSource = new DataSource({
-  type: 'postgres', // ou outro banco (mysql, sqlite, etc.)
+  type: 'postgres', 
   host: process.env.DB_HOST || 'localhost',
   port: parseInt(process.env.DB_PORT || '5432'),
   username: process.env.DB_USER || 'postgres',
@@ -21,9 +21,9 @@ const AppDataSource = new DataSource({
     InvestmentEntity,
     AvailableInvestmentEntity,
   ],
-  migrations: ['./src/migration/*.ts'], // Certifique-se de que está correto
-  synchronize: false, // Evite 'true' em produção
+  migrations: ['./src/migration/*.ts'], 
+  synchronize: false, 
   logging: true,
 });
 
-export { AppDataSource }; // Apenas esta exportação deve existir!
+export { AppDataSource }; 

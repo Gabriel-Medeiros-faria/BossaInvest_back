@@ -1,9 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { WalletController } from './wallet.controller';
 
-// Mock do decorador Public
 jest.mock('src/resources/decorators/authentication.guard.decorator', () => ({
-  Public: jest.fn().mockImplementation(() => () => {}), // Mock do decorador para evitar problemas de importação
+  Public: jest.fn().mockImplementation(() => () => {}), 
 }));
 
 describe('WalletController', () => {

@@ -9,13 +9,12 @@ export class AvailableInvestmentEntity {
   companyName: string
 
   @Column({ name: 'sector', type: 'varchar', nullable: false })
-  sector: string // Setor de atuação da empresa (opcional)
+  sector: string 
 
   @Column({ name: 'description', type: 'text', nullable: false })
-  description: string // Descrição da empresa (opcional)
-
+  description: string 
   @Column({ name: 'minimum_investment', type: 'decimal', precision: 15, scale: 2, nullable: false })
-  minimumInvestment: number // Valor mínimo de investimento
+  minimumInvestment: number 
 
   @Column({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date

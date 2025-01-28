@@ -8,7 +8,7 @@ export class InvestmentEntity {
   id: number;
 
   @Column({ name: 'amount', type: 'decimal', precision: 15, scale: 2, nullable: false })
-  amount: number;  // Valor investido
+  amount: number;  
 
   @Column({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
@@ -16,7 +16,7 @@ export class InvestmentEntity {
   @Column({ name: 'updated_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
 
-  // Relacionamento ManyToOne com WalletEntity (Carteira)
+
   @Column({ name: 'wallet_id', type: 'integer', nullable: false })
   walletId: number;
 
@@ -27,7 +27,6 @@ export class InvestmentEntity {
   @JoinColumn({ name: 'wallet_id' })
   wallet: WalletEntity;
 
-  // Relacionamento ManyToOne com AvailableInvestmentEntity (Investimento disponível)
   @Column({ name: 'available_investment_id', type: 'integer', nullable: false })
   availableInvestmentId: number;
 

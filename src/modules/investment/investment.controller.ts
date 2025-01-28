@@ -9,13 +9,13 @@ import { AuthorizationGuard } from '../authorization/authorization.guard';
 export class InvestmentController {
   constructor(private readonly investmentService: InvestmentService) {}
 
-  // Rota para obter os investimentos com filtros
+
   @Get()
   async getInvestments(@Query() query: InvestmentQueryInputDto) {
     return this.investmentService.investments(query);
   }
 
-  // Rota para adicionar um novo investimento
+
   @Post()
   async addInvestment(@Body() investmentData: AddInvestmentInputDto) {
     return this.investmentService.addInvestment(investmentData);

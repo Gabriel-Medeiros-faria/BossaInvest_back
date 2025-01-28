@@ -3,8 +3,8 @@ import { InvestmentController } from './investment.controller';
 import { InvestmentService } from './investment.service';
 import { AddInvestmentInputDto } from './dtos/add-investment-input.dto';
 import { InvestmentQueryInputDto } from './dtos/investment-query-input.dto';
-import { AuthorizationGuard } from '../authorization/authorization.guard'; // Supondo que seja esse o caminho do AuthorizationGuard
-import { AuthorizationService } from '../authorization/authorization.service'; // Supondo que esse seja o serviço que está faltando
+import { AuthorizationGuard } from '../authorization/authorization.guard'; 
+import { AuthorizationService } from '../authorization/authorization.service'; 
 
 describe('InvestmentController', () => {
   let controller: InvestmentController;
@@ -23,15 +23,15 @@ describe('InvestmentController', () => {
           },
         },
         {
-          provide: AuthorizationService, // Mock do AuthorizationService
+          provide: AuthorizationService,
           useValue: {
-            validateToken: jest.fn(), // Funções mock do serviço de autorização
+            validateToken: jest.fn(), 
           },
         },
       ],
     })
-      .overrideGuard(AuthorizationGuard) // Se estiver usando um Guard de autorização
-      .useValue({ canActivate: jest.fn(() => true) }) // Mocka a função canActivate
+      .overrideGuard(AuthorizationGuard) 
+      .useValue({ canActivate: jest.fn(() => true) }) 
       .compile();
 
     controller = module.get<InvestmentController>(InvestmentController);
@@ -52,7 +52,7 @@ describe('InvestmentController', () => {
           walletId: 1, 
           availableInvestmentId: 2 
         }
-      ]; // Mock com todas as propriedades do InvestmentDto
+      ]; 
       
       jest.spyOn(service, 'investments').mockResolvedValue(result);
   

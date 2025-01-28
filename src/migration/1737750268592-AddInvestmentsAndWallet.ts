@@ -2,7 +2,7 @@ import { MigrationInterface, QueryRunner } from 'typeorm'
 
 export class AddInvestmentsAndWallet1737750268592 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    // Criando tabela role
+
     await queryRunner.query(`
           CREATE TABLE IF NOT EXISTS role (
             id SERIAL PRIMARY KEY,
@@ -11,7 +11,6 @@ export class AddInvestmentsAndWallet1737750268592 implements MigrationInterface 
           );
         `)
 
-    // Criando tabela user
     await queryRunner.query(`
           CREATE TABLE IF NOT EXISTS "user" (
             id SERIAL PRIMARY KEY,
@@ -23,7 +22,7 @@ export class AddInvestmentsAndWallet1737750268592 implements MigrationInterface 
           );
         `)
 
-    // Criando tabela wallet
+
     await queryRunner.query(`
           CREATE TABLE IF NOT EXISTS wallet (
             id SERIAL PRIMARY KEY,
@@ -35,7 +34,6 @@ export class AddInvestmentsAndWallet1737750268592 implements MigrationInterface 
           );
         `)
 
-    // Criando tabela investment_available
     await queryRunner.query(`
           CREATE TABLE IF NOT EXISTS investment_available (
             id SERIAL PRIMARY KEY,
@@ -47,7 +45,7 @@ export class AddInvestmentsAndWallet1737750268592 implements MigrationInterface 
           );
         `)
 
-    // Criando tabela investment
+
     await queryRunner.query(`
           CREATE TABLE IF NOT EXISTS investment (
             id SERIAL PRIMARY KEY,
@@ -61,13 +59,12 @@ export class AddInvestmentsAndWallet1737750268592 implements MigrationInterface 
           );
         `)
 
-    // Populando a tabela role
     await queryRunner.query(`
           INSERT INTO role (name, key) VALUES
           ('Investidor', 'investidor');
         `)
 
-    // Populando a tabela investment_available
+
     await queryRunner.query(`
           INSERT INTO investment_available (company_name, sector, description, minimum_investment) VALUES
           ('Empresa A', 'Tecnologia', 'Descrição da Empresa A', 100.00),
@@ -80,31 +77,29 @@ export class AddInvestmentsAndWallet1737750268592 implements MigrationInterface 
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    // Revertendo dados da tabela investment_available
+
     await queryRunner.query(`
           DELETE FROM investment_available WHERE company_name IN (
             'Empresa A', 'Empresa B', 'Empresa C', 'Empresa D', 'Empresa E', 'Empresa F'
           );
         `)
 
-    // Revertendo dados da tabela role
+
     await queryRunner.query(`
           DELETE FROM role WHERE name = 'Investidor';
         `)
 
-    // Deletando tabela investment
+
     await queryRunner.query(`DROP TABLE IF EXISTS investment;`)
 
-    // Deletando tabela investment_available
+
     await queryRunner.query(`DROP TABLE IF EXISTS investment_available;`)
 
-    // Deletando tabela wallet
     await queryRunner.query(`DROP TABLE IF EXISTS wallet;`)
 
-    // Deletando tabela user
+
     await queryRunner.query(`DROP TABLE IF EXISTS "user";`)
 
-    // Deletando tabela role
     await queryRunner.query(`DROP TABLE IF EXISTS role;`)
   }
 }

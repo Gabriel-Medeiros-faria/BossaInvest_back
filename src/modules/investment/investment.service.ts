@@ -42,7 +42,7 @@ export class InvestmentService {
       throw new Error('Investimento não encontrado');
     }
 
-    // Deleta o investimento
+
     await this.investmentRepository.remove(investment);
 
     return { message: 'Investimento deletado com sucesso' };

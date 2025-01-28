@@ -14,7 +14,7 @@ describe('InvestmentAvailableService', () => {
         InvestmentAvailableService,
         {
           provide: getRepositoryToken(AvailableInvestmentEntity),
-          useClass: Repository, // Simulando o repositório
+          useClass: Repository, 
         },
       ],
     }).compile();

@@ -7,7 +7,7 @@ import { RoleEntity } from '../role/role.entity'
 import { forwardRef } from '@nestjs/common'
 import { AuthorizationModule } from '../authorization/authorization.module'
 
-jest.setTimeout(10000); // Aumenta o timeout para 10 segundos
+jest.setTimeout(10000); 
 
 describe('UsersService', () => {
   let service: UserService;

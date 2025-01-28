@@ -26,7 +26,7 @@ export class UserEntity {
   @JoinColumn({ name: 'role_id' })
   role: RoleEntity;
 
-  // Relacionamento OneToMany com WalletEntity
+
   @OneToMany(() => WalletEntity, (wallet) => wallet.user)
   wallets: WalletEntity[];
 }
